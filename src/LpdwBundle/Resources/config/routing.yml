@@ -1,6 +1,13 @@
 lpdw_homepage:
     path:     /
     defaults: { _controller: LpdwBundle:Default:index }
+
 lpdw_posts:
     path:     /posts
     defaults: { _controller: LpdwBundle:Post:posts }
+
+lpdw_post:
+    path:     /post/{id}
+    defaults: { _controller: LpdwBundle:Post:post }
+    requirements:
+        id: \d+

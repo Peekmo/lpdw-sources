@@ -20,4 +20,15 @@ class PostController extends Controller
             'posts' => $posts
         ]);
     }
+
+    public function postAction(Request $request, $id)
+    {
+        $ko = $request->query->get('ko');
+
+        return $this->render('LpdwBundle:Post:post.html.twig', [
+            'id'   => $id,
+            'post' => new Post('salut 3', 'moi', true, new \DateTime(),new \DateTime()),
+            'ko' => $ko
+        ]);
+    }
 }

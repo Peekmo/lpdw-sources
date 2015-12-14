@@ -1,7 +1,6 @@
-{% for post in posts %}
 <ul>
     <li>
-        <a href="{{ path('lpdw_post', {'id': 1, 'ko': 'ok'}) }}">{{ post.content }}</a>
+        {{ post.content }}
     </li>
     <li>
         {{ post.author }}
@@ -13,4 +12,6 @@
         {{ post.date|date('Y-m-d') }}
     </li>
 </ul>
-{% endfor %}
+
+{{ id }}
+{{ ko }}
