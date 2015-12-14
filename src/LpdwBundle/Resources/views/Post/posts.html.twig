@@ -1,1 +1,16 @@
-Coucou
+{% for post in posts %}
+<ul>
+    <li>
+        {{ post.content }}
+    </li>
+    <li>
+        {{ post.author }}
+    </li>
+    <li>
+        {{ post.visibility ? 'oui' : 'non' }}
+    </li>
+    <li>
+        {{ post.date|date('Y-m-d') }}
+    </li>
+</ul>
+{% endfor %}
