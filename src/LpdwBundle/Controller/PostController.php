@@ -32,7 +32,8 @@ class PostController extends Controller
 
         // $post = $repository->findOneById($id);
         // $post = $repository->findOneBy(array('id' => $id));
-        $post = $repository->find($id);
+        // $post = $repository->find($id);
+        $post = $repository->getById($id);
 
         return $this->render('LpdwBundle:Post:post.html.twig', [
             'id'   => $id,

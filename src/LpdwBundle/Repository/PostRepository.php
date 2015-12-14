@@ -12,5 +12,21 @@ use Doctrine\ORM\EntityRepository;
  */
 class PostRepository extends EntityRepository
 {
-    
+    public function getById($id)
+    {
+        try {
+            $post = $this
+                ->createQueryBuilder('p')
+                ->where('p.id = :id')
+                ->setParameter('id', $id)
+                ->getQuery()
+                ->getSingleResult()
+                // ->getOneOrNullResult() équivalent au getSingleResult()
+            ;
+
+            return $post;
+        } catch (\Exception $ex) {
+            return null;
+        }
+    }
 }
