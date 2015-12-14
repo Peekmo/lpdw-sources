@@ -1,16 +1,20 @@
-{% for post in posts %}
-<ul>
-    <li>
-        <a href="{{ path('lpdw_post', {'id': 1, 'ko': 'ok'}) }}">{{ post.content }}</a>
-    </li>
-    <li>
-        {{ post.author }}
-    </li>
-    <li>
-        {{ post.visibility ? 'oui' : 'non' }}
-    </li>
-    <li>
-        {{ post.date|date('Y-m-d') }}
-    </li>
-</ul>
-{% endfor %}
+{% extends 'LpdwBundle::layout.html.twig' %}
+
+{% block body %}
+    {% for post in posts %}
+    <ul>
+        <li>
+            <a href="{{ path('lpdw_post', {'id': 1, 'ko': 'ok'}) }}">{{ post.content }}</a>
+        </li>
+        <li>
+            {{ post.author }}
+        </li>
+        <li>
+            {{ post.visibility ? 'oui' : 'non' }}
+        </li>
+        <li>
+            {{ post.date|date('Y-m-d') }}
+        </li>
+    </ul>
+    {% endfor %}
+{% endblock %}

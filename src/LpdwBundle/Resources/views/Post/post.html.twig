@@ -1,17 +1,21 @@
-<ul>
-    <li>
-        {{ post.content }}
-    </li>
-    <li>
-        {{ post.author }}
-    </li>
-    <li>
-        {{ post.visibility ? 'oui' : 'non' }}
-    </li>
-    <li>
-        {{ post.date|date('Y-m-d') }}
-    </li>
-</ul>
+{% extends 'LpdwBundle::layout.html.twig' %}
 
-{{ id }}
-{{ ko }}
+{% block body %}
+    <ul>
+        <li>
+            {{ post.content }}
+        </li>
+        <li>
+            {{ post.author }}
+        </li>
+        <li>
+            {{ post.visibility ? 'oui' : 'non' }}
+        </li>
+        <li>
+            {{ post.date|date('Y-m-d') }}
+        </li>
+    </ul>
+
+    {{ id }}
+    {{ ko }}
+{% endblock %}
