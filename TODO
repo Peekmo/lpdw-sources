@@ -1,0 +1,13 @@
+- CRÉER PostController
+- Route /posts
+- Renvoie un template : 'posts.html.twig'
+    -> écrire 'coucou' dedans
+
+Post:
+    content : string
+    author : string
+    visibility : bool
+    date : datetime
+    last_update : datetime
+
+    -> renvoyer un tableau des "Post"
