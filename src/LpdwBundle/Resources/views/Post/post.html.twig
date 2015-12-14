@@ -9,13 +9,10 @@
             {{ post.author }}
         </li>
         <li>
-            {{ post.visibility ? 'oui' : 'non' }}
+            {{ post.visible ? 'oui' : 'non' }}
         </li>
         <li>
             {{ post.date|date('Y-m-d') }}
         </li>
     </ul>
-
-    {{ id }}
-    {{ ko }}
 {% endblock %}

@@ -10,11 +10,13 @@ class PostController extends Controller
 {
     public function postsAction(Request $request)
     {
-        $posts = [
-            new Post('salut', 'moi', true, new \DateTime(),new \DateTime()),
-            new Post('salut 2', 'moi', true, new \DateTime(),new \DateTime()),
-            new Post('salut 3', 'moi', true, new \DateTime(),new \DateTime()),
-        ];
+        $repository = $this
+            ->getDoctrine()
+            ->getRepository('LpdwBundle:Post')
+        ;
+
+        // $posts = $repository->findBy(array());
+        $posts = $repository->findAll();
 
         return $this->render('LpdwBundle:Post:posts.html.twig', [
             'posts' => $posts
@@ -23,12 +25,18 @@ class PostController extends Controller
 
     public function postAction(Request $request, $id)
     {
-        $ko = $request->query->get('ko');
+        $repository = $this
+            ->getDoctrine()
+            ->getRepository('LpdwBundle:Post')
+        ;
+
+        // $post = $repository->findOneById($id);
+        // $post = $repository->findOneBy(array('id' => $id));
+        $post = $repository->find($id);
 
         return $this->render('LpdwBundle:Post:post.html.twig', [
             'id'   => $id,
-            'post' => new Post('salut 3', 'moi', true, new \DateTime(),new \DateTime()),
-            'ko' => $ko
+            'post' => $post
         ]);
     }
 }

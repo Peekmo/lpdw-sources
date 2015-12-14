@@ -4,13 +4,13 @@
     {% for post in posts %}
     <ul>
         <li>
-            <a href="{{ path('lpdw_post', {'id': 1, 'ko': 'ok'}) }}">{{ post.content }}</a>
+            <a href="{{ path('lpdw_post', {'id': post.id, 'ko': 'ok'}) }}">{{ post.content }}</a>
         </li>
         <li>
             {{ post.author }}
         </li>
         <li>
-            {{ post.visibility ? 'oui' : 'non' }}
+            {{ post.visible ? 'oui' : 'non' }}
         </li>
         <li>
             {{ post.date|date('Y-m-d') }}
