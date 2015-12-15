@@ -36,9 +36,10 @@ framework:
 twig:
     debug:            "%kernel.debug%"
     strict_variables: "%kernel.debug%"
-    form:
-        resources:
-            - 'LpdwBundle::fields.html.twig'
+    # Configuration du thème en global
+    # form:
+    #     resources:
+    #         - 'LpdwBundle::fields.html.twig'
 
 # Doctrine Configuration
 doctrine:

@@ -8,6 +8,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
 class PostType extends AbstractType
 {
@@ -15,7 +16,7 @@ class PostType extends AbstractType
     {
         $builder
             // ->add('content', 'text')
-            ->add('content', TextType::class, array(
+            ->add('content', TextareaType::class, array(
                 'required' => false // Pas de validation HTML5
             ))
             ->add('author', TextType::class, array(

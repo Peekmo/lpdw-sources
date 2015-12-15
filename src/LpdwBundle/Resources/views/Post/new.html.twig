@@ -1,7 +1,10 @@
 {% extends 'LpdwBundle::layout.html.twig' %}
 
 {% block body %}
-    {{ form_start(form) }}
-        {{ form_row(form.content, {'attr': {'class': 'wouhou'}}) }}
+    {# Pas de configuration globale, configuration juste pour le form "form" #}
+    {% form_theme form 'LpdwBundle::fields.html.twig' %}
+
+    {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
+        {{ form_row(form.content) }}
     {{ form_end(form) }}
 {% endblock %}
