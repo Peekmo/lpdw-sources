@@ -1,12 +1,14 @@
 <!DOCTYPE HTML>
 <html>
     <head>
-
+        {% stylesheets 'bundles/lpdw/css/*' %}
+            <link rel="stylesheet" href="{{ asset_url }}" />
+        {% endstylesheets %}
     </head>
     <body>
         <div style="background-color: red;">
             {% block body %}
-            {% endblock %}    
+            {% endblock %}
         </div>
 
     </body>

@@ -1,3 +1,7 @@
-{{ form_start(form) }}
-{{ form_widget(form) }}
-{{ form_end(form) }}
+{% extends 'LpdwBundle::layout.html.twig' %}
+
+{% block body %}
+    {{ form_start(form) }}
+        {{ form_row(form.content, {'attr': {'class': 'wouhou'}}) }}
+    {{ form_end(form) }}
+{% endblock %}
