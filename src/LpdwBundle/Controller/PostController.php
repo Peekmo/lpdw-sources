@@ -4,7 +4,8 @@ namespace LpdwBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
-use LpdwBundle\Post;
+use LpdwBundle\Entity\Post;
+use LpdwBundle\Form\Type\PostType;
 
 class PostController extends Controller
 {
@@ -38,6 +39,18 @@ class PostController extends Controller
         return $this->render('LpdwBundle:Post:post.html.twig', [
             'id'   => $id,
             'post' => $post
+        ]);
+    }
+
+    public function newAction(Request $request)
+    {
+        $post = new Post();
+
+        // $form = $this->createForm(new PostType(), $post); // Pre 2.8
+        $form = $this->createForm(PostType::class, $post); // Post 2.8
+
+        return $this->render('LpdwBundle:Post:new.html.twig', [
+            'form' => $form->createView()
         ]);
     }
 }

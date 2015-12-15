@@ -7,7 +7,11 @@ lpdw_posts:
     defaults: { _controller: LpdwBundle:Post:posts }
 
 lpdw_post:
-    path:     /post/{id}
+    path:     /posts/{id}
     defaults: { _controller: LpdwBundle:Post:post }
     requirements:
         id: \d+
+
+lpdw_new_post:
+    path:     /posts/new
+    defaults: { _controller: LpdwBundle:Post:new }
