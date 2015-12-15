@@ -18,8 +18,11 @@ class PostType extends AbstractType
             ->add('content', TextType::class, array(
                 'required' => false // Pas de validation HTML5
             ))
-            ->add('author', TextType::class)
+            ->add('author', TextType::class, array(
+                'required' => false // Pas de validation HTML5
+            ))
             ->add('visible', ChoiceType::class, array(
+                'required' => false,
                 'choices' => array(
                     'yes' => 'Oui',
                     'no'  => 'Non'
@@ -27,7 +30,9 @@ class PostType extends AbstractType
                 'multiple' => false, // Pas de choix multiple
                 'expanded' => true   // Pas de select
             ))
-            ->add('date', DateType::class)
+            ->add('date', DateType::class, array(
+                'required' => false
+            ))
             ->add('submit', SubmitType::class, array('label' => 'Envoyer'))
         ;
     }
