@@ -1,0 +1,96 @@
+<?php
+
+namespace LpdwBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * PostLike
+ *
+ * @ORM\Table(name="post_like")
+ * @ORM\Entity(repositoryClass="LpdwBundle\Repository\PostLikeRepository")
+ */
+class PostLike
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="score", type="integer")
+     */
+    private $score;
+
+    /**
+     * @var Post
+     *
+     * @ORM\ManyToOne(targetEntity="Post")
+     * @ORM\JoinColumn(name="target_id", referencedColumnName="id")
+     */
+    private $target;
+
+    /**
+     * Get id
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set score
+     *
+     * @param integer $score
+     *
+     * @return PostLike
+     */
+    public function setScore($score)
+    {
+        $this->score = $score;
+
+        return $this;
+    }
+
+    /**
+     * Get score
+     *
+     * @return int
+     */
+    public function getScore()
+    {
+        return $this->score;
+    }
+
+    /**
+     * Set target
+     *
+     * @param \stdClass $target
+     *
+     * @return PostLike
+     */
+    public function setTarget($target)
+    {
+        $this->target = $target;
+
+        return $this;
+    }
+
+    /**
+     * Get target
+     *
+     * @return \stdClass
+     */
+    public function getTarget()
+    {
+        return $this->target;
+    }
+}
