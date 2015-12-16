@@ -19,9 +19,6 @@ class PostType extends AbstractType
             ->add('content', TextareaType::class, array(
                 'required' => false // Pas de validation HTML5
             ))
-            ->add('author', TextType::class, array(
-                'required' => false // Pas de validation HTML5
-            ))
             ->add('visible', ChoiceType::class, array(
                 'choices' => array(
                     1 => 'Oui',

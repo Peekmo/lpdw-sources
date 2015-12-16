@@ -6,6 +6,15 @@
         {% endstylesheets %}
     </head>
     <body>
+        {#% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+        {% if is_granted('IS_AUTHENTICATED_ANONYMOUSLY') %#}
+
+        {% if app.user %}
+            <a href="{{ path('lpdw_logout') }}">Déconnexion</a>
+        {% else %}
+            <a href="{{ path('lpdw_login') }}">Connexion</a>
+        {% endif %}
         <div style="background-color: red;">
             {% block body %}
             {% endblock %}

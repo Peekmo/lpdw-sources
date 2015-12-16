@@ -22,6 +22,17 @@ security:
             security: false
 
         main:
+            anonymous: true
+            # http_basic: ~ Penser à l'enlever !!
             pattern: ^/
-            http_basic: ~
             provider: user_provider
+            form_login:
+                login_path: lpdw_login
+                check_path: lpdw_login_check
+                default_target_path: lpdw_posts
+            logout:
+                path: lpdw_logout
+                target: lpdw_posts
+
+    access_control:
+        - { path: ^/posts/new$, roles: IS_AUTHENTICATED_FULLY }

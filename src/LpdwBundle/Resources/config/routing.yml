@@ -15,3 +15,14 @@ lpdw_post:
 lpdw_new_post:
     path:     /posts/new
     defaults: { _controller: LpdwBundle:Post:new }
+
+lpdw_login:
+    path: /login
+    defaults: { _controller: LpdwBundle:Login:login }
+
+lpdw_login_check:
+    path: /login_check
+    defaults: { _controller: LpdwBundle:Login:loginCheck }
+
+lpdw_logout:
+    path: /logout

@@ -45,7 +45,17 @@ class PostController extends Controller
 
     public function newAction(Request $request)
     {
+        // $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
+
+        if ($this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY')) {
+            // Faire ceci si mon utilisateur est connecté
+        }
+
+        // Récupère l'utilisateur connecté
+        $user = $this->get('security.token_storage')->getToken()->getUser();
+
         $post = new Post();
+        $post->setUser($user);
 
         // $form = $this->createForm(new PostType(), $post); // Pre 2.8
         $form = $this->createForm(PostType::class, $post); // Post 2.8

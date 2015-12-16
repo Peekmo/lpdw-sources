@@ -7,7 +7,7 @@
             <a href="{{ path('lpdw_post', {'id': post.id, 'ko': 'ok'}) }}">{{ post.content }}</a>
         </li>
         <li>
-            {{ post.author }}
+            {{ post.user.username }}
         </li>
         <li>
             {{ post.visible ? 'oui' : 'non' }}

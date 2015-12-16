@@ -31,13 +31,6 @@ class Post
     private $content;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="author", type="string", length=255)
-     */
-    private $author;
-
-    /**
      * @var bool
      *
      * @ORM\Column(name="visible", type="boolean")
@@ -201,4 +194,43 @@ class Post
     {
         return $this->updateDate;
     }
+
+    /**
+     * Set the value of Id
+     *
+     * @param int id
+     *
+     * @return self
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of User
+     *
+     * @return User
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
+     * Set the value of User
+     *
+     * @param User user
+     *
+     * @return self
+     */
+    public function setUser(User $user)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
 }
