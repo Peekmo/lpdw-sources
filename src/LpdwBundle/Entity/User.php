@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Table(name="lpdw_user")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="LpdwBundle\Repository\UserRepository")
  */
 class User implements UserInterface, \Serializable
 {

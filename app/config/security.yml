@@ -13,6 +13,7 @@ security:
         user_provider:
             entity:
                 class: LpdwBundle\Entity\User
+                #property: username -- property permet d'utiliser le repository de symfony2
 
     firewalls:
         # disables authentication for assets and the profiler, adapt it according to your needs
