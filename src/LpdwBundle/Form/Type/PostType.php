@@ -23,10 +23,9 @@ class PostType extends AbstractType
                 'required' => false // Pas de validation HTML5
             ))
             ->add('visible', ChoiceType::class, array(
-                'required' => false,
                 'choices' => array(
-                    'yes' => 'Oui',
-                    'no'  => 'Non'
+                    1 => 'Oui',
+                    0  => 'Non'
                 ),
                 'multiple' => false, // Pas de choix multiple
                 'expanded' => true   // Pas de select
