@@ -2,3 +2,10 @@ services:
     lpdw.like_manager:
         class: LpdwBundle\LikeManager\LikeManager
         arguments: [@doctrine, @security.token_storage]
+
+    lpdw.like_extension:
+        class: LpdwBundle\Twig\LikeExtension
+        arguments: [@lpdw.like_manager]
+        public: false
+        tags:
+            - {name: twig.extension}

@@ -41,7 +41,7 @@ class PostController extends Controller
 
         return $this->render('LpdwBundle:Post:post.html.twig', [
             'id'   => $id,
-            'post' => $post
+            'post' => $post,
         ]);
     }
 

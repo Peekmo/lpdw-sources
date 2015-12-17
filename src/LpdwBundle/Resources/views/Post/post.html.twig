@@ -20,5 +20,9 @@
             <a href="{{ path('lpdw_post_dislike', {'id': post.id}) }}">J'aime pas</a>
         </li>
         {% endif %}
+
+
+        {{ get_post_likes(post) }}
+        {{ get_post_dislikes(post) }}
     </ul>
 {% endblock %}
