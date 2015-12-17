@@ -78,9 +78,6 @@ class PostController extends Controller
 
     public function likeAction(Request $request, $id)
     {
-        // Récupère l'utilisateur courant
-        $user = $this->get('security.token_storage')->getToken()->getUser();
-
         // Récupération du post qu'on va aimer
         $repository = $this
             ->getDoctrine()
@@ -89,16 +86,7 @@ class PostController extends Controller
 
         $post = $repository->find($id);
 
-        // Création du postlike
-        $postLike = new PostLike();
-        $postLike->setScore(1);
-        $postLike->setTarget($post);
-        $postLike->setUser($user);
-
-        // Sauvegarde
-        $em = $this->getDoctrine()->getManager();
-        $em->persist($postLike);
-        $em->flush($postLike);
+        $this->get('lpdw.like_manager')->createLike($post, 1);
 
         // Redirection vers le détails d'un Post
         return $this->redirect(
@@ -111,19 +99,7 @@ class PostController extends Controller
      */
     public function dislikeAction(Request $request, Post $post)
     {
-        // Récupère l'utilisateur courant
-        $user = $this->get('security.token_storage')->getToken()->getUser();
-
-        // Création du postlike
-        $postLike = new PostLike();
-        $postLike->setScore(-1);
-        $postLike->setTarget($post);
-        $postLike->setUser($user);
-
-        // Sauvegarde
-        $em = $this->get('doctrine')->getManager();
-        $em->persist($postLike);
-        $em->flush($postLike);
+        $this->get('lpdw.like_manager')->createLike($post, -1);
 
         // Redirection vers le détails d'un Post
         return $this->redirect(
