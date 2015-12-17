@@ -52,7 +52,9 @@ class LikeManager
      */
     public function getLikes(Post $post)
     {
+        $repository = $this->doctrine->getRepository('LpdwBundle:PostLike');
 
+        return $repository->getCountLikes($post, 1);
     }
 
 
@@ -63,6 +65,8 @@ class LikeManager
      */
     public function getDislikes(Post $post)
     {
+        $repository = $this->doctrine->getRepository('LpdwBundle:PostLike');
 
+        return $repository->getCountLikes($post, -1);
     }
 }

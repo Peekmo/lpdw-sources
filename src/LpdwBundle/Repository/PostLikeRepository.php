@@ -1,6 +1,7 @@
 <?php
 
 namespace LpdwBundle\Repository;
+use LpdwBundle\Entity\Post;
 
 /**
  * PostLikeRepository
@@ -10,4 +11,32 @@ namespace LpdwBundle\Repository;
  */
 class PostLikeRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function getCountLikes(Post $post, $score)
+    {
+        return (int)$this
+            ->createQueryBuilder('pl')
+            ->select('count(pl)')
+            ->where('pl.score = :score')
+            ->andWhere('pl.target = :post')
+            ->setParameter('score', $score)
+            ->setParameter('post', $post)
+            ->getQuery()
+            ->getSingleScalarResult()
+        ;
+    }
+
+    public function getCountLikesById($id, $score)
+    {
+        return (int)$this
+            ->createQueryBuilder('pl')
+            ->select('count(pl)')
+            ->join('pl.target', 'post')
+            ->where('pl.score = :score')
+            ->andWhere('post.id = :id')
+            ->setParameter('score', $score)
+            ->setParameter('id', $id)
+            ->getQuery()
+            ->getSingleScalarResult()
+        ;
+    }
 }
