@@ -9,3 +9,8 @@ services:
         public: false
         tags:
             - {name: twig.extension}
+
+    lpdw.toto_listener:
+        class: LpdwBundle\Listener\TotoListener
+        tags:
+            - {name: kernel.event_listener, event: kernel.request, method: checkToto}

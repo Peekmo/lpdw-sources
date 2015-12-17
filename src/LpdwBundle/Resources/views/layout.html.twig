@@ -4,8 +4,12 @@
         {% stylesheets 'bundles/lpdw/css/*' %}
             <link rel="stylesheet" href="{{ asset_url }}" />
         {% endstylesheets %}
+
     </head>
     <body>
+        {{ app.request.query.get('tata') }}
+
+        
         {#% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
         {% if is_granted('IS_AUTHENTICATED_FULLY') %}
         {% if is_granted('IS_AUTHENTICATED_ANONYMOUSLY') %#}
