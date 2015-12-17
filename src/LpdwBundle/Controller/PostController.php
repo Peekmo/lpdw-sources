@@ -6,7 +6,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use LpdwBundle\Entity\Post;
+use LpdwBundle\Entity\PostLike;
 use LpdwBundle\Form\Type\PostType;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 
 class PostController extends Controller
 {
@@ -46,7 +48,6 @@ class PostController extends Controller
     public function newAction(Request $request)
     {
         // $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
-
         if ($this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY')) {
             // Faire ceci si mon utilisateur est connecté
         }
@@ -73,5 +74,60 @@ class PostController extends Controller
         return $this->render('LpdwBundle:Post:new.html.twig', [
             'form' => $form->createView()
         ]);
+    }
+
+    public function likeAction(Request $request, $id)
+    {
+        // Récupère l'utilisateur courant
+        $user = $this->get('security.token_storage')->getToken()->getUser();
+
+        // Récupération du post qu'on va aimer
+        $repository = $this
+            ->getDoctrine()
+            ->getRepository('LpdwBundle:Post')
+        ;
+
+        $post = $repository->find($id);
+
+        // Création du postlike
+        $postLike = new PostLike();
+        $postLike->setScore(1);
+        $postLike->setTarget($post);
+        $postLike->setUser($user);
+
+        // Sauvegarde
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($postLike);
+        $em->flush($postLike);
+
+        // Redirection vers le détails d'un Post
+        return $this->redirect(
+            $this->generateUrl('lpdw_post', array('id' => $id))
+        );
+    }
+
+    /**
+     * @ParamConverter("post", class="LpdwBundle:Post")
+     */
+    public function dislikeAction(Request $request, Post $post)
+    {
+        // Récupère l'utilisateur courant
+        $user = $this->get('security.token_storage')->getToken()->getUser();
+
+        // Création du postlike
+        $postLike = new PostLike();
+        $postLike->setScore(-1);
+        $postLike->setTarget($post);
+        $postLike->setUser($user);
+
+        // Sauvegarde
+        $em = $this->get('doctrine')->getManager();
+        $em->persist($postLike);
+        $em->flush($postLike);
+
+        // Redirection vers le détails d'un Post
+        return $this->redirect(
+            $this->generateUrl('lpdw_post', array('id' => $post->getId()))
+        );
     }
 }

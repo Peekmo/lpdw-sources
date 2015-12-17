@@ -14,5 +14,11 @@
         <li>
             {{ post.date|date('Y-m-d') }}
         </li>
+        {% if app.user %}
+        <li>
+            <a href="{{ path('lpdw_post_like', {'id': post.id}) }}">J'aime</a>
+            <a href="{{ path('lpdw_post_dislike', {'id': post.id}) }}">J'aime pas</a>
+        </li>
+        {% endif %}
     </ul>
 {% endblock %}

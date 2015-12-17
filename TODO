@@ -1,13 +1,20 @@
-- CRÉER PostController
-- Route /posts
-- Renvoie un template : 'posts.html.twig'
-    -> écrire 'coucou' dedans
+- Créer interface "LikeInterface" générique
+    - getScore()
+    - getTarget()
 
-Post:
-    content : string
-    author : string
-    visibility : bool
-    date : datetime
-    last_update : datetime
 
-    -> renvoyer un tableau des "Post"
+
+- Créer entité "PostLike" qui implémente cette interface
+
+
+
+
+- Service de management de like
+    - likeEntity
+    - dislikeEntity
+
+
+
+
+- Crée la route /posts/:id/like
+- Crée la route /posts/:id/dislike

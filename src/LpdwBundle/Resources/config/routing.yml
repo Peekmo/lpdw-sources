@@ -26,3 +26,15 @@ lpdw_login_check:
 
 lpdw_logout:
     path: /logout
+
+lpdw_post_like:
+    path: /posts/{id}/like
+    defaults: { _controller: LpdwBundle:Post:like }
+    requirements:
+        id: \d+
+
+lpdw_post_dislike:
+    path: /posts/{id}/dislike
+    defaults: { _controller: LpdwBundle:Post:dislike }
+    requirements:
+        id: \d+

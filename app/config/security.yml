@@ -36,3 +36,4 @@ security:
 
     access_control:
         - { path: ^/posts/new$, roles: IS_AUTHENTICATED_FULLY }
+        - { path: ^/posts/(\d+)/(like|dislike)$, roles: IS_AUTHENTICATED_FULLY }
